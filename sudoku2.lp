@@ -7,12 +7,12 @@
 % Your implementation please...
 
 % Defining the grid
-row(1..4).
-col(1..4).
-num(1..4).
+row(1..9).
+col(1..9).
+num(1..9).
 
 % Defining the subgrid
-subgrid(X, Y, G) :- G = 1 + (((X-1)/2)*2 + ((Y-1)/2)), row(X), col(Y).
+subgrid(X, Y, G) :- G = 1 + (((X-1)/3)*3 + ((Y-1)/3)), row(X), col(Y).
 
 % Each cell must have exactly one number
 1 {sudoku(R, C, N) : num(N)} 1 :- row(R), col(C).
