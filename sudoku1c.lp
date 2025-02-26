@@ -23,11 +23,13 @@ subgrid(X, Y, G) :- G = 1 + (((X-1)/2)*2 + ((Y-1)/2)), row(X), col(Y).
 % Each column must contain all numbers without duplicates
 1 {sudoku(R, C, N) : row(R)} 1 :- col(C), num(N).
 
+% Each subgrid must contain each number exactly once
+:- num(N), subgrid(R1, C1, G), subgrid(R2, C2, G), R1 != R2, C1 != C2, sudoku(R1, C1, N), sudoku(R2, C2, N).
+
 % Enforce given initial values from the instance file
 sudoku(R, C, N) :- initial(R, C, N).
 
 % Prevent overriding initial values
 :- initial(R, C, N), not sudoku(R, C, N).
 
-#show subgrid/3.
 #show sudoku/3.
